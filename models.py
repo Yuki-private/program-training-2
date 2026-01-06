@@ -64,9 +64,15 @@ def train(model,dataloader, loss_fn,optimizer):
 def test(model,dataloader,loss_fn):
 
     loss_total = 0.0
+
+    device = next(model.parameters()).device
+
     model.eval()
     with torch.no_grad():
         for image_batch, label_batch in dataloader:
+
+            image_batch = image_batch.to(device)
+            label_batch = label_batch.to(device)
 
             logits_batch = model(image_batch)
 

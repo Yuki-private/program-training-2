@@ -48,7 +48,7 @@ def train(model,dataloader, loss_fn,optimizer):
     for image_batch, label_batch in dataloader:
 
         image_batch = image_batch.to(device)
-        label_batch = image_batch.to(device)
+        label_batch = label_batch.to(device)
 
 
         logits_batch = model(image_batch)

@@ -22,9 +22,14 @@ class MyModel(nn.Module):
 def test_accuracy(model, dataloader):
     n_corrects = 0
 
+    device = next(model.parameters()).devise
+
     model.eval()
     with torch.no_grad():
         for image_batch, label_batch in dataloader:
+            
+            image_batch = image_batch.to(device)
+            label_batch = label_batch.to(device)
 
             logits_batch = model(image_batch)
 

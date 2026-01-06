@@ -37,7 +37,11 @@ for image_batch,label_batch in dataloader_test:
     print(label_batch.shape)
     break
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 model = models.MyModel()
+
+model.to(device)
 
 loss_fn = torch.nn.CrossEntropyLoss()
 

@@ -22,7 +22,7 @@ class MyModel(nn.Module):
 def test_accuracy(model, dataloader):
     n_corrects = 0
 
-    device = next(model.parameters()).devise
+    device = next(model.parameters()).device
 
     model.eval()
     with torch.no_grad():

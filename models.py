@@ -41,8 +41,16 @@ def test_accuracy(model, dataloader):
     return accuracy
 
 def train(model,dataloader, loss_fn,optimizer):
+
+    device = next(model.parameters()).device
+
     model.train()
     for image_batch, label_batch in dataloader:
+
+        image_batch = image_batch.to(device)
+        label_batch = image_batch.to(device)
+
+
         logits_batch = model(image_batch)
 
         loss = loss_fn(logits_batch, label_batch)
